@@ -13,12 +13,6 @@ export default defineConfig({
   },
   build: {
     sourcemap: false, // Disable source maps to reduce RAM usage
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          mapbox: ['mapbox-gl'], // Separate Mapbox into its own chunk
-        },
-      },
-    },
+
   },
 });
