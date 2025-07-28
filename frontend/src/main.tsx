@@ -1,20 +1,41 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { EventFinderProvider } from "./context/provider";
-import { CombinedView } from "./Combined";
+import { CircularProgress, Box } from "@mui/material";
 
 import "./index.css";
-import App from "./App";
+
+// Lazy load components for code splitting
+const App = lazy(() => import("./App"));
+const CombinedView = lazy(() => import("./Combined"));
+const Dashboard = lazy(() => import("./Dashboard"));
+
+// Loading component
+const LoadingSpinner = () => (
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    }}
+  >
+    <CircularProgress />
+  </Box>
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <EventFinderProvider>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/map" element={<CombinedView />} />
-        </Routes>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/map" element={<CombinedView />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Suspense>
       </EventFinderProvider>
     </BrowserRouter>
   </StrictMode>

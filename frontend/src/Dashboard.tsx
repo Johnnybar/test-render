@@ -26,7 +26,7 @@ import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { EventFinderContext } from "./context/context";
 import { eventsInfoMock } from "./mocks";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const { eventsInfo, setEventsInfo } = useContext(EventFinderContext);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -278,3 +278,5 @@ export const Dashboard = () => {
     </Container>
   );
 };
+
+export default Dashboard;

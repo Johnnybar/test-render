@@ -12,12 +12,20 @@ import {
   Divider,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import {
-  MapOutlined,
-  ExploreOutlined,
-  LocationCityOutlined,
-} from "@mui/icons-material";
+import { lazy, Suspense } from "react";
 import "./App.css";
+
+// Lazy load icons to reduce initial bundle size
+const MapOutlined = lazy(() => import("@mui/icons-material/MapOutlined"));
+const ExploreOutlined = lazy(() => import("@mui/icons-material/ExploreOutlined"));
+const LocationCityOutlined = lazy(() => import("@mui/icons-material/LocationCityOutlined"));
+
+// Icon wrapper component
+const LazyIcon = ({ icon: Icon, ...props }: { icon: any; [key: string]: any }) => (
+  <Suspense fallback={<div style={{ width: 24, height: 24 }} />}>
+    <Icon {...props} />
+  </Suspense>
+);
 
 function App() {
   return (
@@ -41,7 +49,7 @@ function App() {
               to="/"
               color="inherit"
               variant="outlined"
-              startIcon={<ExploreOutlined />}
+              startIcon={<LazyIcon icon={ExploreOutlined} />}
             >
               Home
             </Button>
@@ -50,7 +58,7 @@ function App() {
               component={RouterLink}
               to="/map"
               color="inherit"
-              startIcon={<MapOutlined />}
+              startIcon={<LazyIcon icon={MapOutlined} />}
             >
               Interactive Dashboard
             </Button>
@@ -116,7 +124,8 @@ function App() {
             }}
           >
             <CardContent sx={{ flexGrow: 1, textAlign: "center", pt: 4 }}>
-              <MapOutlined
+              <LazyIcon
+                icon={MapOutlined}
                 sx={{ fontSize: 60, color: "primary.main", mb: 2 }}
               />
               <Typography
@@ -139,7 +148,7 @@ function App() {
                 to="/map"
                 variant="contained"
                 size="large"
-                startIcon={<ExploreOutlined />}
+                startIcon={<LazyIcon icon={ExploreOutlined} />}
                 sx={{ borderRadius: 2 }}
               >
                 Open Map View
@@ -156,7 +165,7 @@ function App() {
             alignItems: "center",
           }}
         >
-          <LocationCityOutlined sx={{ mr: 1, color: "text.secondary" }} />
+          <LazyIcon icon={LocationCityOutlined} sx={{ mr: 1, color: "text.secondary" }} />
           <Typography variant="body2" color="text.secondary">
             Berlin Events Finder • {new Date().getFullYear()}
           </Typography>

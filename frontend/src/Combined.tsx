@@ -33,7 +33,7 @@ import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { EventFinderContext, EventsInfo } from "./context/context";
 import { eventsInfoMock } from "./mocks";
 
-export const CombinedView = () => {
+const CombinedView = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { eventsInfo, setEventsInfo } = useContext(EventFinderContext);
@@ -505,3 +505,5 @@ export const CombinedView = () => {
     </Container>
   );
 };
+
+export default CombinedView;
