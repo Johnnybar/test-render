@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Map styles */
+.mapboxgl-popup {
+  max-width: 300px;
+}
+
+.mapboxgl-popup-content {
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.mapboxgl-ctrl-group {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.mapboxgl-ctrl-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+/* Loading indicator */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Animation for markers */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.marker-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .MuiDataGrid-root {
+    font-size: 0.875rem;
+  }
+
+  .MuiToolbar-root .MuiButton-root {
+    padding: 6px 8px;
+  }
+
+  .MuiToolbar-root .MuiButton-startIcon {
+    margin-right: 4px;
+  }
+
+  .MuiToolbar-root .MuiTypography-h6 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .MuiToolbar-root {
+    flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .MuiToolbar-root .MuiBox-root {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .MuiToolbar-root .MuiTypography-h6 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .MuiButton-root .MuiButton-startIcon {
+    margin-right: 0;
+  }
+
+  .MuiButton-root .MuiButton-endIcon {
+    margin-left: 0;
+  }
+
+  .MuiButton-root .MuiTypography-button {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

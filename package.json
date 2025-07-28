@@ -1,0 +1,18 @@
+{
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/icons-material": "^7.1.0",
+        "concurrently": "^9.2.0",
+        "react-router-dom": "^7.4.1"
+    },
+    "scripts": {
+        "start": "echo 'Checking concurrently...' && ls -la node_modules/.bin && npx concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+        "start:backend": "./venv/bin/flask run",
+        "start:frontend": "cd frontend && npm run dev"
+
+    },
+    "devDependencies": {
+        "eslint-plugin-prettier": "^5.2.6"
+    }
+}
