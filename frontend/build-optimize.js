@@ -22,14 +22,14 @@ try {
 
   // Install dependencies with memory optimization
   console.log('📦 Installing dependencies...');
-  execSync('npm ci --production=false', { 
+  execSync('yarn install --frozen-lockfile', { 
     stdio: 'inherit',
     env: { ...process.env, NODE_OPTIONS: '--max-old-space-size=512' }
   });
 
   // Build with optimizations
   console.log('🔨 Building with optimizations...');
-  execSync('npm run build:prod', { 
+  execSync('yarn build:prod', { 
     stdio: 'inherit',
     env: { ...process.env, NODE_OPTIONS: '--max-old-space-size=512' }
   });

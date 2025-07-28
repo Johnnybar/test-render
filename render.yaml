@@ -5,11 +5,11 @@ services:
     buildCommand: |
       pip install -r requirements.txt
       cd frontend
-      npm ci --production=false
-      npm run build:prod
+      yarn install --frozen-lockfile
+      yarn build:prod
     startCommand: |
       cd frontend
-      npm run preview -- --host 0.0.0.0 --port $PORT
+      yarn preview --host 0.0.0.0 --port $PORT
     envVars:
       - key: NODE_ENV
         value: production
